@@ -128,7 +128,7 @@ classDiagram
 
     class WorkoutHistoryResult {
         <<Interface>>
-        +workout: Workout[]
+        +workouts: Workout[]
         +total: number
     }
 
@@ -201,7 +201,7 @@ Input:
 | Key | Type | Notes |
 | --- | --- | --- |
 | page | number | Posititve integer |
-| limit | number | Integer from 1 to 10 |
+| limit | number | Integer max 100, default 10 |
 
 Output:
 ```
@@ -228,7 +228,7 @@ Input:
 ```
 {
     name: string,
-    start_name: ISO8061,
+    start_time: ISO8061,
     end_time: ISO8061,
     notes: string, (Max 500 char)
     sets: [
