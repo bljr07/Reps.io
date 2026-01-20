@@ -193,14 +193,14 @@ npm start
 
 | Service | Route |
 | -- | -- |
-| **Workout** | [[GET] /workouts/history](#/workouts/history) |
-| | [[POST] /workouts/finish](#/workouts/finish) |
-| **Exercises** | [[POST] /exercises/custom](#/exercises/custom) |
-| **Analytics** | [[GET] /analytics/recovery](#/analytics/recovery) |
+| **Workout** | [[GET] /workouts/history](#1-get-workoutshistory) |
+| | [[POST] /workouts/finish](#2-post-workoutsfinish) |
+| **Exercises** | [[POST] /exercises/custom](#1-post-exercisescustom) |
+| **Analytics** | [[GET] /analytics/recovery](#1-get-analyticsrecovery) |
 
 ### Workouts
 ---
-<hidden id='/workouts/history'> 1. `[GET] /workouts/history` <br/>
+#### 1. `[GET] /workouts/history`
 Get paginated past workouts.
 
 Input:
@@ -229,7 +229,7 @@ Output:
 }
 ```
 ---
-<hidden id='/workouts/finish'> 2. `[POST] /workouts/finish` <br/>
+#### 2. `[POST] /workouts/finish`
 Save a completed workout session.
 
 Input:
@@ -260,7 +260,7 @@ Output:
 
 ### Exercises
 ---
-<hidden id='/exercises/custom'> 1. `[POST] /exercises/custom` <br/>
+#### 1. `[POST] /exercises/custom`
 Create a user-specific exercise.
 
 Input:
@@ -292,7 +292,7 @@ Output:
 
 ### Analytics
 ---
-<hidden id='/analytics/recovery'> 1. `[GET] /analytics/recovery` <br/>
+#### 1. `[GET] /analytics/recovery`
 Get muscle recovery status.
 
 Input: NA
