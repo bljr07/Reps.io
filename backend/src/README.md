@@ -176,10 +176,16 @@ FRONTEND_URL=http://localhost:5173
 ```
 *Note: The frontend URL is specified here for configuration of CORS security*
 ### 3. Running the Server
+**Development**
 ```
-npm run build
 npm run dev
 ```
+**Production**
+```
+npm run build
+npm start
+```
+
 ## API Documentation
 **Base URL**: `/api`<br/>
 **Headers**: `Authorization: Bearer <SUPABASE_JWT>`<br>
