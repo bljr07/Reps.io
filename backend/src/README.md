@@ -221,7 +221,9 @@ Output:
             id: UUID,
             user_id: UUID,
             name: string,
-            start_time: ISO8601
+            start_time: ISO8601,
+            end_time?: ISO8601,
+            notes? : string
         }
     ]
 }
