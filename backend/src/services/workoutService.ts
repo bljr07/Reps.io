@@ -1,6 +1,6 @@
 import { SupabaseClient } from '@supabase/supabase-js';
 import type { HistoryQueryDTO, SaveWorkoutDTO } from '../schemas/workoutSchema.js';
-import type { Workout } from '../types/workout.types.js';
+import type { Workout, WorkoutHistoryResult } from '../types/workout.types.js';
 
 export class WorkoutService {
   constructor(private supabase: SupabaseClient, private userId: string){}
@@ -52,7 +52,7 @@ export class WorkoutService {
     }
   }
 
-  async getHistory(query: HistoryQueryDTO): Promise<{ workouts: Workout[], total: number }> {
+  async getHistory(query: HistoryQueryDTO): Promise< WorkoutHistoryResult > {
     const from = (query.page - 1) * query.limit;
     const to = from + query.limit - 1;
 

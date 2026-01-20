@@ -45,3 +45,12 @@ export interface HistoryResponse {
   total: number;
   workouts: Workout[];
 }
+
+// ==========================================
+// 3. SERVICE RESPONSE SHAPES (From Service to Controller)
+// ==========================================
+
+export interface WorkoutHistoryResult {
+  workouts: Workout[];
+  total: number;
+}
