@@ -6,6 +6,8 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 // Import Bootstrap CSS Icons
 import 'bootstrap-icons/font/bootstrap-icons.css'
+// Import Font Awesome Icons
+import '@fortawesome/fontawesome-free/js/all.js'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
