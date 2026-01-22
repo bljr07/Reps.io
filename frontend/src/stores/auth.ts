@@ -26,7 +26,7 @@ export const useAuthStore = defineStore('auth', {
         // We use getSession() instead of getUser() here to reduce the number of API calls.
         //    getSession() checks the browser memory for a saved token which 'looks' valid (and can also auto refresh tokens)
         //    getUser() validates the token with the server
-        // Since initialize() is called on every page, getSession() is sufficient and preferred for speed.
+        // Since initialize() is called on every reload, getSession() is sufficient and preferred for speed.
         const { data } = await supabase.auth.getSession()
         this.session = data.session
         this.user = data.session?.user || null
