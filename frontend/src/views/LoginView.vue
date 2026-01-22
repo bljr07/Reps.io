@@ -1,35 +1,11 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { useAuthStore } from '../stores/auth'
-import { useRouter } from 'vue-router'
+import { useAuthForm } from '../composables/useAuthForm'
+import AuthInput from '../components/AuthInput.vue'
+import SocialButtons from '../components/SocialButtons.vue'
 
-const auth = useAuthStore()
-const router = useRouter()
+// Business logic handled by /composables/useAuthForm
+const { email, password, isSignUp, errorMessage, isLoading, handleSubmit } = useAuthForm()
 
-const email = ref('')
-const password = ref('')
-const isSignUp = ref(false)
-const errorMessage = ref('')
-const isLoading = ref(false)
-
-const handleSubmit = async () => {
-  try {
-    isLoading.value = true
-    errorMessage.value = ''
-
-    if (isSignUp.value) {
-      await auth.signUp(email.value, password.value)
-      alert('Check your email for the confirmation link!')
-    } else {
-      await auth.signIn(email.value, password.value)
-      router.push('/dashboard')
-    }
-  } catch (err: any) {
-    errorMessage.value = err.message
-  } finally {
-    isLoading.value = false
-  }
-}
 </script>
 
 <template>
@@ -49,33 +25,21 @@ const handleSubmit = async () => {
       </div>
 
       <form @submit.prevent="handleSubmit">
-        <div class="mb-3">
-          <label for="email" class="form-label text-white">Email</label>
-          <input
-            type="email"
-            class="form-control form-control-dark"
-            id="email"
-            v-model="email"
-            placeholder="Enter email address"
-            required
-          >
-        </div>
+        <AuthInput 
+          v-model="email" 
+          label="Email" 
+          type="email" 
+          placeholder="Enter email address"
+          required 
+        />
 
-        <div class="mb-4 position-relative">
-          <label for="password" class="form-label text-white">Password</label>
-          <input
-            type="password"
-            class="form-control form-control-dark pe-5"
-            id="password"
-            v-model="password"
-            placeholder="Enter password"
-            required
-            minlength="6"
-          >
-          <button type="button" class="btn btn-link text-muted position-absolute top-50 end-0 translate-middle-y text-decoration-none" style="margin-top: 10px;">
-            <i class="bi bi-eye-slash-fill"></i>
-          </button>
-        </div>
+        <AuthInput 
+          v-model="password" 
+          label="Password" 
+          type="password" 
+          placeholder="Enter password"
+          required 
+        />
 
         <div class="text-end mb-4">
           <a href="#" class="text-muted text-decoration-none small">Forgot Password?</a>
@@ -98,14 +62,7 @@ const handleSubmit = async () => {
         <span class="text-muted small px-2 position-relative" style="top: -12px;">OR CONTINUE WITH</span>
       </div>
 
-      <div class="d-flex justify-content-between gap-3">
-        <button type="button" class="btn btn-dark flex-fill" style="background: #2d3748; border: 1px solid #3a465b;">
-          <i class="bi bi-facebook text-white"></i>
-        </button>
-        <button type="button" class="btn btn-dark flex-fill" style="background: #2d3748; border: 1px solid #3a465b;">
-          <i class="bi bi-google text-white"></i>
-        </button>
-      </div>
+      <SocialButtons />
 
       <div class="text-center mt-4">
         <p class="text-muted mb-0">
@@ -128,6 +85,6 @@ const handleSubmit = async () => {
 }
 
 .text-muted {
-  color: var(--text-muted) !important;
+    color: var(--text-muted) !important;
 }
 </style>
