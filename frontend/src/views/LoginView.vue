@@ -42,12 +42,12 @@ const { email, password, isSignUp, errorMessage, isLoading, handleSubmit } = use
         />
 
         <div class="text-end mb-4">
-          <a href="#" class="text-info text-decoration-none small">Forgot Password?</a>
+          <a href="#" class="text-info text-decoration-none small hover-expand">Forgot Password?</a>
         </div>
 
         <button
           type="submit"
-          class="btn btn-primary btn-lg w-100 py-2"
+          class="btn btn-primary btn-lg w-100 py-2 hover-expand"
           :disabled="isLoading"
           style="border: none;"
         >
@@ -66,9 +66,9 @@ const { email, password, isSignUp, errorMessage, isLoading, handleSubmit } = use
 
       <div class="text-center mt-4">
         <p class="text-info mb-0">
-          {{ isSignUp ? 'Already have an account?' : 'New to Reps.io?' }}
-          <a href="#" @click.prevent="isSignUp = !isSignUp" class="text-primary text-decoration-none">
-            {{ isSignUp ? 'Sign In' : 'Sign Up' }}
+          {{ isSignUp ? 'Already have an account?' : 'New to Reps.io?' }} &nbsp;
+          <a href="#" @click.prevent="isSignUp = !isSignUp" class="text-primary text-decoration-none hover-expand">
+            {{ isSignUp ? 'Sign In' : 'Create Account' }}
           </a>
         </p>
       </div>
