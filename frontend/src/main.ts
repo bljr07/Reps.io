@@ -4,6 +4,8 @@ import './assets/main.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 // Import Bootstrap JS (for Modals/Dropdowns)
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
+// Import Bootstrap CSS Icons
+import 'bootstrap-icons/font/bootstrap-icons.css'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
