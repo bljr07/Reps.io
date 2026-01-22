@@ -11,7 +11,7 @@ onMounted(() => {
   auth.initialize()
 })
 
-// Watcher: Runs exactly once when 'loading' flips from true -> false
+// Watcher: Runs exactly once when 'loading' flips from true -> false during initialization/ reload
 watch(() => auth.loading, (isLoading) => {
   if (!isLoading) {
     // Auth check is done. Now we strictly enforce redirects.
