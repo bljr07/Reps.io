@@ -27,14 +27,20 @@ apiClient.interceptors.request.use(
   }
 );
 
-// 3. Response Interceptor: Optional Global Error Handling
+// 3. Response Interceptor: Logging out & clearing memory state for invalid token
 apiClient.interceptors.response.use(
   (response) => response,
-  (error) => {
-    // If the backend returns 401 (Unauthorized), we might want to log the user out
+  async (error) => {
+    // Check if it's a 401 error from the backend
     if (error.response && error.response.status === 401) {
-      console.error('Unauthorized! Redirecting to login...');
-      // In the future, we can force a redirect here
+      console.warn('Session expired or invalid. Logging out...');
+      
+      // 1. Clear Supabase LocalStorage
+      await supabase.auth.signOut();
+      
+      // 2. Force redirect to login
+      // We use window.location to ensure a hard refresh clears any stale memory state
+      window.location.href = '/login';
     }
     return Promise.reject(error);
   }
