@@ -2,6 +2,7 @@
 import { onMounted, watch } from 'vue'
 import { useAuthStore } from './stores/auth'
 import { useRouter, RouterView, useRoute } from 'vue-router'
+import TheAlerts from './components/TheAlerts.vue'
 
 const auth = useAuthStore()
 const router = useRouter()
@@ -30,6 +31,9 @@ watch(() => auth.loading, (isLoading) => {
 </script>
 
 <template>
+  <!-- Alert box which is always at the top -->
+  <TheAlerts />
+
   <!-- Spinner while loading -->
   <div v-if="auth.loading" class="d-flex justify-content-center align-items-center vh-100 bg-light">
     <div class="text-center">

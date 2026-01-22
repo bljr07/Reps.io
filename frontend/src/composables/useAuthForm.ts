@@ -1,25 +1,25 @@
 import { ref } from 'vue'
 import { useAuthStore } from '../stores/auth'
+import { useAlertStore } from '../stores/alert'
 import { useRouter } from 'vue-router'
 
 export function useAuthForm() {
   const auth = useAuthStore()
   const router = useRouter()
+  const alert = useAlertStore()
 
   const email = ref('')
   const password = ref('')
   const isSignUp = ref(false)
-  const errorMessage = ref('')
   const isLoading = ref(false)
 
   const handleSubmit = async () => {
     try {
       isLoading.value = true
-      errorMessage.value = ''
 
       if (isSignUp.value) {
         await auth.signUp(email.value, password.value)
-        alert('Check your email for the confirmation link!')
+        alert.showAlert('Check your email for the confirmation link!', 'success')
         password.value = ''
         isSignUp.value = false
       } else {
@@ -27,7 +27,7 @@ export function useAuthForm() {
         router.push('/dashboard')
       }
     } catch (err: any) {
-      errorMessage.value = err.message
+      alert.showAlert(err.message, 'error')
     } finally {
       isLoading.value = false
     }
@@ -37,7 +37,6 @@ export function useAuthForm() {
     email,
     password,
     isSignUp,
-    errorMessage,
     isLoading,
     handleSubmit
   }

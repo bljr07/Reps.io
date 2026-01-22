@@ -4,7 +4,7 @@ import AuthInput from '../components/AuthInput.vue'
 import SocialButtons from '../components/SocialButtons.vue'
 
 // Business logic handled by /composables/useAuthForm
-const { email, password, isSignUp, errorMessage, isLoading, handleSubmit } = useAuthForm()
+const { email, password, isSignUp, isLoading, handleSubmit } = useAuthForm()
 
 </script>
 
@@ -19,11 +19,7 @@ const { email, password, isSignUp, errorMessage, isLoading, handleSubmit } = use
         <h2 class="text-white mb-2">Welcome back, athlete.</h2>
         <p class="text-info">Enter your details to access your workout logs.</p>
       </div>
-
-      <div v-if="errorMessage" class="alert alert-danger" role="alert">
-        {{ errorMessage }}
-      </div>
-
+      
       <form @submit.prevent="handleSubmit">
         <AuthInput 
           v-model="email" 
