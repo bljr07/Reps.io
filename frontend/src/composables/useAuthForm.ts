@@ -20,6 +20,8 @@ export function useAuthForm() {
       if (isSignUp.value) {
         await auth.signUp(email.value, password.value)
         alert('Check your email for the confirmation link!')
+        password.value = ''
+        isSignUp.value = false
       } else {
         await auth.signIn(email.value, password.value)
         router.push('/dashboard')
