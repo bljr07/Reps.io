@@ -28,17 +28,17 @@ const inputType = computed(() => {
       :type="inputType"
       :value="modelValue"
       @input="emit('update:modelValue', ($event.target as HTMLInputElement).value)"
-      class="form-control form-control-dark"
+      class="form-control form-control-dark border border-info"
       :class="{ 'pe-5': type === 'password' }"
       :placeholder="placeholder"
       :required="required"
     >
     
     <button 
-      v-if="type === 'password'"
+      v-if="type === 'password' && modelValue.length > 0"
       type="button" 
       @click="showPassword = !showPassword"
-      class="btn btn-link text-muted position-absolute bottom-0 end-0 text-decoration-none pe-3 pb-2"
+      class="btn btn-link text-info position-absolute bottom-0 end-0 text-decoration-none pe-3"
     >
       <i :class="showPassword ? 'bi bi-eye-fill' : 'bi bi-eye-slash-fill'"></i>
     </button>

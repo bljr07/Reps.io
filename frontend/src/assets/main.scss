@@ -1,0 +1,43 @@
+/* 1. Define Custom Variables (Overrides Bootstrap Defaults) */
+$font-family-base: 'Lexend', sans-serif;
+
+// Brand Colors
+$primary: #195de6;
+$secondary: #2d3748;
+$info: #a0aec0;
+
+// Body & Backgrounds
+$body-bg: #0f172a;
+$body-color: #ffffff;
+
+// Custom Variables (Things Bootstrap doesn't have by default)
+$primary-hover: #224abe;
+$border-color: #3a465b;
+
+/* 2. Import Bootstrap */
+// This will generate all CSS using YOUR variables above
+@import "bootstrap/scss/bootstrap";
+
+/* 3. Global Styles & Utilities */
+body, #app {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  // Background and Font are now handled automatically by Bootstrap's $body-bg variable!
+}
+
+/* 4. Custom Input Fields */
+.form-control-dark {
+  background-color: #{$secondary};
+  color: #{$white};
+
+  &:focus {
+    background-color: #{$border-color};
+    border-color: #{$primary};
+    box-shadow: 0 0 0 0.25rem rgba($primary, 0.25); // Sass rgba function
+  }
+
+  &::placeholder {
+    color: #{$info};
+  }
+}
+

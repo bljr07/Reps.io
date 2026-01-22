@@ -12,12 +12,12 @@ const { email, password, isSignUp, errorMessage, isLoading, handleSubmit } = use
   <div class="d-flex justify-content-center align-items-center min-vh-100">
     <div class="login-card p-4" style="max-width: 480px; width: 100%;">
       <div class="text-center mb-4">
-        <div class="logo mb-3">
-          <i class="fa-solid fa-dumbbell" style="font-size: 2rem; color: #ffffff; rotate: 135deg;"></i>
+        <div class="logo mb-3 bg-primary d-inline-block p-3 border rounded-4">
+          <i class="fa-solid fa-dumbbell text-white fs-1" style="rotate: 135deg;"></i>
         </div>
         <h1 class="text-white font-weight-bold mb-2">Reps.io</h1>
         <h2 class="text-white mb-2">Welcome back, athlete.</h2>
-        <p class="text-muted">Enter your details to access your workout logs.</p>
+        <p class="text-info">Enter your details to access your workout logs.</p>
       </div>
 
       <div v-if="errorMessage" class="alert alert-danger" role="alert">
@@ -42,7 +42,7 @@ const { email, password, isSignUp, errorMessage, isLoading, handleSubmit } = use
         />
 
         <div class="text-end mb-4">
-          <a href="#" class="text-muted text-decoration-none small">Forgot Password?</a>
+          <a href="#" class="text-info text-decoration-none small">Forgot Password?</a>
         </div>
 
         <button
@@ -57,15 +57,15 @@ const { email, password, isSignUp, errorMessage, isLoading, handleSubmit } = use
         </button>
       </form>
 
-      <div class="text-center mt-4 mb-2">
-        <hr class="text-muted" style="border-top: 1px solid #2d3748;">
-        <span class="text-muted small px-2 position-relative" style="top: -12px;">OR CONTINUE WITH</span>
+      <div class="text-center mt-4 mb-3">
+        <hr class="border border-info mb-2">
+        <span class="text-info small px-2">OR CONTINUE WITH</span>
       </div>
 
       <SocialButtons />
 
       <div class="text-center mt-4">
-        <p class="text-muted mb-0">
+        <p class="text-info mb-0">
           {{ isSignUp ? 'Already have an account?' : 'New to Reps.io?' }}
           <a href="#" @click.prevent="isSignUp = !isSignUp" class="text-primary text-decoration-none">
             {{ isSignUp ? 'Sign In' : 'Sign Up' }}
@@ -75,16 +75,3 @@ const { email, password, isSignUp, errorMessage, isLoading, handleSubmit } = use
     </div>
   </div>
 </template>
-
-<style scoped>
-.logo {
-  display: inline-block;
-  padding: 15px;
-  background: var(--primary);
-  border-radius: 12px;
-}
-
-.text-muted {
-    color: var(--text-muted) !important;
-}
-</style>

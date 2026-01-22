@@ -1,7 +1,5 @@
-import './assets/main.css'
+import './assets/main.scss'
 
-// Import Bootstrap CSS
-import 'bootstrap/dist/css/bootstrap.min.css'
 // Import Bootstrap JS (for Modals/Dropdowns)
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 // Import Bootstrap CSS Icons
