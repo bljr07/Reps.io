@@ -20,6 +20,18 @@ const router = createRouter({
       meta: { requiresAuth: true }
     },
     {
+      path: '/history',
+      name: 'history',
+      component: DashboardView, // TODO: Replace with historyView
+      // meta: { requiresAuth: true }
+    },
+    {
+      path: '/profile',
+      name: 'profile',
+      component: DashboardView, // TODO: Replace with profileView
+      // meta: { requiresAuth: true }
+    },
+    {
       path: '/',
       redirect: '/dashboard'
     }
