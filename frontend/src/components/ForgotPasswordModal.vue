@@ -1,19 +1,9 @@
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue'
-import { useAuthStore } from '../stores/auth'
-import { useAlertStore } from '../stores/alert'
-import AuthInput from './AuthInput.vue'
+import { ref, onMounted, watch, onBeforeUnmount } from 'vue'
 import { Modal } from 'bootstrap'
+import { useForgotPassword } from '../composables/useForgotPassword'
+import AuthInput from './AuthInput.vue'
 
-const auth = useAuthStore()
-const alert = useAlertStore()
-
-const email = ref('')
-const isLoading = ref(false)
-const modalRef = ref<HTMLElement | null>(null)
-const modalInstance = computed(() => modalRef.value ? new Modal(modalRef.value) : null)
-
-// Props
 const props = defineProps<{
   isForgetPassword: boolean
 }>()
@@ -21,32 +11,49 @@ const props = defineProps<{
 // Emits
 const emit = defineEmits(['closeModal'])
 
-// Watch to toggle the modal
-watch(() => props.isForgetPassword, () => {
-  if (props.isForgetPassword && modalInstance.value){
-    modalInstance.value.show()
-  } else if (modalInstance.value){
-    modalInstance.value.hide()
+// Importing business logic from useForgotPassword.ts
+const { email, isLoading, submitResetPassword } = useForgotPassword()
+
+// Data
+const modalRef = ref<HTMLElement | null>(null)
+let modalInstance: Modal | null = null
+
+onMounted(() => {
+  if (modalRef.value) {
+    // Initialize Bootstrap Modal
+    modalInstance = new Modal(modalRef.value)
+
+    // Listen for the native bootstrap hidden event to sync state with parent
+    modalRef.value.addEventListener('hidden.bs.modal', () => {
+      emit('closeModal')
+    })
   }
 })
 
-// Handling when the reset button is clicked
-// 1. Send the request to Supabase
-// 2. Show success alert
-// 3. Close the Modal
-const handleReset = async () => {
-  try {
-    isLoading.value = true
-    await auth.resetPassword(email.value)
+onBeforeUnmount(() => {
+  // Clean up to prevent memory leaks
+  if (modalInstance) {
+    modalInstance.dispose()
+  }
+})
 
-    alert.showAlert('Password reset email sent! Check your inbox.', 'success')
-    email.value = ''
+// Watch prop to toggle modal visibility
+watch(() => props.isForgetPassword, (newVal) => {
+  if (newVal) {
+    modalInstance?.show()
+  } else {
+    modalInstance?.hide()
+  }
+})
+
+// 4. Handle Submission
+const handleFormSubmit = async () => {
+  // Call the business logic
+  const success = await submitResetPassword()
+  
+  // Only close the modal if the logic succeeded
+  if (success) {
     emit('closeModal')
-
-  } catch (err: any) {
-    alert.showAlert(err.message, 'error')
-  } finally {
-    isLoading.value = false
   }
 }
 </script>
@@ -59,7 +66,7 @@ const handleReset = async () => {
         <!-- Header -->
         <div class="modal-header border-bottom border-secondary">
           <h5 class="modal-title text-white">Reset Password</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close" @click="$emit('closeModal')"></button>
+          <button type="button" class="btn-close btn-close-white" @click="$emit('closeModal')"></button>
         </div>
 
         <!-- Body -->
@@ -68,8 +75,7 @@ const handleReset = async () => {
             Enter your email address and we'll send you a magic link to reset your password.
           </p>
           
-          <!-- Email form -->
-          <form @submit.prevent="handleReset">
+          <form @submit.prevent="handleFormSubmit">
             <AuthInput 
               v-model="email" 
               label="Email Address" 
