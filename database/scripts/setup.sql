@@ -101,21 +101,20 @@ USING (
 -- This view allows the UI to query: "SELECT * FROM v_muscle_recovery" 
 -- It automatically handles the complex joins and date math.
 
-CREATE OR REPLACE VIEW v_muscle_recovery AS
+CREATE OR REPLACE VIEW v_muscle_recovery 
+WITH (security_invoker = on) AS -- Enable RLS
 SELECT 
-    w.user_id,
+    auth.uid() AS user_id, -- Force the current User ID to appear even if no workout data exists
     mg.id AS muscle_group_id,
     mg.name AS muscle_group_name,
     MAX(w.start_time) as last_worked_at,
     EXTRACT(DAY FROM (NOW() - MAX(w.start_time)))::INTEGER as days_since_last_workout
 FROM muscle_groups mg
-CROSS JOIN auth.users u -- Conceptual join for structure
 LEFT JOIN sub_muscles sm ON sm.group_id = mg.id
 LEFT JOIN exercises e ON e.sub_muscle_id = sm.id
 LEFT JOIN workout_sets ws ON ws.exercise_id = e.id
 LEFT JOIN workouts w ON w.id = ws.workout_id AND w.user_id = auth.uid()
-WHERE auth.uid() IS NOT NULL -- Security check
-GROUP BY w.user_id, mg.id, mg.name;
+GROUP BY mg.id, mg.name;
 
 -- ==========================================
 -- 5. SEED DATA (The "Starter Pack")
