@@ -19,7 +19,7 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         // Silence deprication warnings due to Bootstrap v5
-        silenceDeprecations: ['mixed-decls', 'color-functions', 'global-builtin', 'import']
+        silenceDeprecations: ['if-function', 'color-functions', 'global-builtin', 'import']
       }
     }
   },
