@@ -84,7 +84,6 @@ onMounted(async () => {
       <section class="pt-4 pb-5">
         <div class="d-flex justify-content-between align-items-center mb-1">
           <h4 class="text-white fw-bold mb-0">Muscle Recovery</h4>
-          <button class="btn btn-link text-primary text-decoration-none fw-bold small p-0">View All</button>
         </div>
         <p class="text-muted small mb-3">Based on your training history</p>
 
