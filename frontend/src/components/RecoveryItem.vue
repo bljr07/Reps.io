@@ -44,7 +44,8 @@ const getIcon = (name: string) => {
       </div>
       <div>
         <h6 class="mb-0 fw-bold text-white">{{ name }}</h6>
-        <small class="text-muted">{{ daysAgo }} days ago</small>
+        <small v-if="props.daysAgo" class="text-muted">{{ daysAgo }} days ago</small>
+        <small v-else class="text-muted">Time to start!</small>
       </div>
     </div>
 
