@@ -49,7 +49,7 @@ const { email, password, isSignUp, isLoading, isForgetPassword, handleSubmit, ha
 
         <button
           type="submit"
-          class="btn btn-primary btn-lg w-100 py-2 hover-expand"
+          class="btn btn-primary btn-lg w-100 py-2 hover-expand text-white fw-medium"
           :disabled="isLoading"
           style="border: none;"
         >

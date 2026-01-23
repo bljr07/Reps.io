@@ -2,17 +2,18 @@
 $font-family-base: 'Lexend', sans-serif;
 
 // Brand Colors
-$primary: #195de6;
+$primary: #0da6f2;
 $secondary: #2d3748;
 $info: #a0aec0;
 
 // Body & Backgrounds
 $body-bg: #0f172a;
 $body-color: #ffffff;
+$surface-card: #1c2a33;   // Slightly lighter for cards
 
 // Custom Variables (Things Bootstrap doesn't have by default)
-$primary-hover: #224abe;
-$border-color: #3a465b;
+$primary-hover: #0b8acb;
+$border-color: #2a3b47;
 
 /* 2. Import Bootstrap */
 // This will generate all CSS using YOUR variables above
@@ -25,7 +26,14 @@ body, #app {
   // Background and Font are now handled automatically by Bootstrap's $body-bg variable!
 }
 
-/* 4. Custom Input Fields */
+body {
+  background-color: $body-bg;
+  color: $body-color;
+  padding-bottom: 80px; /* Space for Bottom Nav */
+}
+
+/* 4. Custom Styling */
+// Forms
 .form-control-dark {
   background-color: #{$secondary};
   color: #{$white};
@@ -41,6 +49,42 @@ body, #app {
   }
 }
 
+// Cards
+.card-custom {
+  background-color: $surface-card;
+  border: 1px solid $border-color;
+  border-radius: 12px; // rounded-xl
+  padding: 1rem;
+}
+
+/* Floating Action Button (FAB) */
+.fab-container {
+  position: fixed;
+  bottom: 100px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  z-index: 30;
+  pointer-events: none; // Let clicks pass through outside the button
+  
+  .btn-fab {
+    pointer-events: auto;
+    background-color: $primary;
+    color: white;
+    border: none;
+    border-radius: 16px;
+    padding: 1rem 2rem;
+    font-weight: 700;
+    box-shadow: 0 12px 24px -8px rgba($primary, 0.5);
+    transition: transform 0.2s;
+    
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+}
+
 /* Custom Animation Utility */
 .hover-expand {
   display: inline-block; // Transform only works on block/inline-block elements
@@ -51,4 +95,10 @@ body, #app {
     transform: scale(1.1); // Scales up by 10%
     text-decoration: none !important; // Ensure underline doesn't appear
   }
+}
+
+/* Material Symbols Utility */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  vertical-align: middle;
 }
