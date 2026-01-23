@@ -15,4 +15,12 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     },
   },
+  css: { // REMOVE THE ENTIRE CSS CLAUSE WHEN UPGRADING TO BOOTSTRAP v6
+    preprocessorOptions: {
+      scss: {
+        // Silence deprication warnings due to Bootstrap v5
+        silenceDeprecations: ['mixed-decls', 'color-functions', 'global-builtin', 'import']
+      }
+    }
+  },
 })
