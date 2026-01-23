@@ -2,9 +2,10 @@
 import { useAuthForm } from '../composables/useAuthForm'
 import AuthInput from '../components/AuthInput.vue'
 import SocialButtons from '../components/SocialButtons.vue'
+import ForgotPasswordModal from '../components/ForgotPasswordModal.vue'
 
 // Business logic handled by /composables/useAuthForm
-const { email, password, isSignUp, isLoading, handleSubmit } = useAuthForm()
+const { email, password, isSignUp, isLoading, isForgetPassword, handleSubmit, handleForgetSubmit } = useAuthForm()
 
 </script>
 
@@ -38,7 +39,12 @@ const { email, password, isSignUp, isLoading, handleSubmit } = useAuthForm()
         />
 
         <div class="text-end mb-4">
-          <a href="#" class="text-info text-decoration-none small hover-expand">Forgot Password?</a>
+          <a 
+            class="text-info text-decoration-none small hover-expand"
+            @click="handleForgetSubmit"
+            >
+            Forgot Password?
+          </a>
         </div>
 
         <button
@@ -69,5 +75,9 @@ const { email, password, isSignUp, isLoading, handleSubmit } = useAuthForm()
         </p>
       </div>
     </div>
+    <ForgotPasswordModal 
+      :isForgetPassword="isForgetPassword"
+      @close-modal="isForgetPassword=false"
+      />
   </div>
 </template>

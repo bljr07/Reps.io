@@ -63,6 +63,15 @@ export const useAuthStore = defineStore('auth', {
       const { error } = await supabase.auth.signOut()
       if (error) throw error
       // State updates automatically via the onAuthStateChange listener above
+    },
+
+    async resetPassword(email: string) {
+      // The redirectTo points to where the user goes after clicking the email link.
+      // Usually, this logs them in automatically, allowing them to change their password on the Dashboard or a Profile page.
+      const { error } = await supabase.auth.resetPasswordForEmail(email, {
+        redirectTo: `${window.location.origin}/dashboard`
+      })
+      if (error) throw error
     }
   }
 })

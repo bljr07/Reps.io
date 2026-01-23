@@ -12,6 +12,7 @@ export function useAuthForm() {
   const password = ref('')
   const isSignUp = ref(false)
   const isLoading = ref(false)
+  const isForgetPassword = ref(false)
 
   const handleSubmit = async () => {
     try {
@@ -33,11 +34,17 @@ export function useAuthForm() {
     }
   }
 
+  const handleForgetSubmit = () => {
+    isForgetPassword.value = true
+  }
+
   return {
     email,
     password,
     isSignUp,
     isLoading,
-    handleSubmit
+    isForgetPassword,
+    handleSubmit,
+    handleForgetSubmit
   }
 }
