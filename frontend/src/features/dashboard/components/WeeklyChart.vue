@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import CustomCard from '@/components/ui/CustomCard.vue'
+
 // Mock data for display purposes
 const days = [
   { label: 'M', height: '40%', active: false },
@@ -12,7 +14,7 @@ const days = [
 </script>
 
 <template>
-  <div class="card-custom d-flex">
+  <CustomCard class="d-flex">
     <div class="flex-fill d-flex justify-content-between align-items-end" style="height: 160px;">
       <div 
         v-for="(day, index) in days" 
@@ -35,7 +37,7 @@ const days = [
         >{{ day.label }}</span>
       </div>
     </div>
-  </div>
+  </CustomCard>
 </template>
 
 <style scoped>
@@ -65,5 +67,4 @@ const days = [
   color: white;
   border-radius: 0.25rem;
 }
-
 </style>

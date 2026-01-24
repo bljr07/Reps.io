@@ -78,18 +78,7 @@ hr {
   
   .btn-fab {
     pointer-events: auto;
-    background-color: $primary;
-    color: white;
-    border: none;
-    border-radius: 16px;
-    padding: 1rem 2rem;
     font-weight: 700;
-    box-shadow: 0 12px 24px -8px rgba($primary, 0.5);
-    transition: transform 0.2s;
-    
-    &:active {
-      transform: scale(0.95);
-    }
   }
 }
 
