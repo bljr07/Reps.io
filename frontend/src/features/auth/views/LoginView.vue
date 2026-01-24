@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useAuthForm } from '../composables/useAuthForm'
 import CustomInput from '@/components/ui/CustomInput.vue'
-import SocialSection from '@/components/ui/SocialSection.vue'
+import SocialSection from '../components/SocialSection.vue'
 import AsyncButton from '@/components/ui/AsyncButton.vue'
 import AppLogo from '@/components/ui/AppLogo.vue'
 import AppTitle from '@/components/ui/AppTitle.vue'

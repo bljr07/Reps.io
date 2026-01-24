@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import CustomBtn from './CustomBtn.vue';
+import CustomBtn from '@/components/ui/CustomBtn.vue';
 
 // Edit here
 const platforms = [
