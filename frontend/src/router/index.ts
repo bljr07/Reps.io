@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { useAuthStore } from '../stores/auth'
 import LoginView from '../views/LoginView.vue'
 import DashboardView from '../views/DashboardView.vue'
+import ActiveWorkoutView from '../views/ActiveWorkoutView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -30,6 +31,12 @@ const router = createRouter({
       name: 'profile',
       component: DashboardView, // TODO: Replace with profileView
       // meta: { requiresAuth: true }
+    },
+    {
+      path: '/workout/active',
+      name: 'active-workout',
+      component: ActiveWorkoutView,
+      meta: { requiresAuth: true }
     },
     {
       path: '/',

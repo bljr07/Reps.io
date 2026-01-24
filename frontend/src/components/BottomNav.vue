@@ -1,5 +1,5 @@
 <template>
-  <nav class="fixed-bottom border-top border-secondary-subtle" style="background-color: #101c22; z-index: 40;">
+  <nav class="fixed-bottom border-top border-secondary-subtle bg-footer" style="z-index: 40;">
     <div class="d-flex justify-content-around py-2">
       
       <router-link to="/dashboard" class="nav-item active">

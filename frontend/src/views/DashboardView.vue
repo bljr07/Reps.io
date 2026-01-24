@@ -108,10 +108,10 @@ onMounted(async () => {
     </div>
 
     <div class="fab-container">
-      <button class="btn-fab d-flex align-items-center gap-2">
+      <router-link to="/workout/active" class="btn-fab d-flex align-items-center gap-2 text-decoration-none">
         <span class="material-symbols-outlined">add</span>
         Start Empty Workout
-      </button>
+      </router-link>
     </div>
 
     <BottomNav />

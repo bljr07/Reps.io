@@ -14,6 +14,7 @@ $surface-card: #1c2a33;   // Slightly lighter for cards
 
 // Custom Variables (Things Bootstrap doesn't have by default)
 $border-color: #2a3b47;
+$footer-color: #101c22;
 
 /* 2. Import Bootstrap */
 // This will generate all CSS using YOUR variables above
@@ -85,6 +86,11 @@ body {
   }
 }
 
+// Footer
+.bg-footer {
+  background-color: $footer-color;
+}
+
 /* Custom Animation Utility */
 .hover-expand {
   display: inline-block; // Transform only works on block/inline-block elements
@@ -101,4 +107,11 @@ body {
 .material-symbols-outlined {
   font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
   vertical-align: middle;
+}
+
+// Remove the spinner from <input type='number'>
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none; /* Removes the buttons for WebKit browsers */
+  margin: 0; /* Ensures no extra margin is left behind */
 }
