@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
-// 
 const muscleToIconMap: Record<string, string> = {
     'Chest': 'fitness_center',
     'Legs': 'directions_run',

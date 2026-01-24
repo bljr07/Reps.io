@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import apiClient from '../api/axios'
+import apiClient from '@/services/api'
 import WeeklyChart from '../components/WeeklyChart.vue'
 import RecoveryItem from '../components/RecoveryItem.vue'
-import BottomNav from '../components/BottomNav.vue'
+import BottomNav from '@/components/layout/BottomNav.vue'
 
 interface RecoveryStat {
   muscle_group_name: string;

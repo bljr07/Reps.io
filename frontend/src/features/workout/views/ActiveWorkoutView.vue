@@ -2,7 +2,6 @@
 import { ref } from 'vue'
 import WorkoutTimer from '../components/WorkoutTimer.vue'
 import ActiveExerciseCard from '../components/ActiveExerciseCard.vue'
-import BottomNav from '../components/BottomNav.vue'
 
 // State
 const exercises = ref<any[]>([]) // Start empty to show empty state

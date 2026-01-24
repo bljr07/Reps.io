@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useAuthForm } from '../composables/useAuthForm'
-import AuthInput from '../components/AuthInput.vue'
-import SocialButtons from '../components/SocialButtons.vue'
+import AuthInput from '@/components/ui/AuthInput.vue'
+import SocialButtons from '@/components/ui/SocialButtons.vue'
 import ForgotPasswordModal from '../components/ForgotPasswordModal.vue'
 
 // Business logic handled by /composables/useAuthForm

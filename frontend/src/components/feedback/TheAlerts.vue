@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useAlertStore } from '../stores/alert'
+import { useAlertStore } from '@/stores/alert'
 
 const alertStore = useAlertStore()
 

@@ -2,7 +2,7 @@
 import { ref, onMounted, watch, onBeforeUnmount } from 'vue'
 import { Modal } from 'bootstrap'
 import { useForgotPassword } from '../composables/useForgotPassword'
-import AuthInput from './AuthInput.vue'
+import AuthInput from '@/components/ui/AuthInput.vue'
 
 const props = defineProps<{
   isForgetPassword: boolean

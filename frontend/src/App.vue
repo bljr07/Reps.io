@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { onMounted, watch } from 'vue'
-import { useAuthStore } from './stores/auth'
+import { useAuthStore } from '@/features/auth/stores/auth'
 import { useRouter, RouterView, useRoute } from 'vue-router'
-import TheAlerts from './components/TheAlerts.vue'
+import TheAlerts from '@/components/feedback/TheAlerts.vue'
 
 const auth = useAuthStore()
 const router = useRouter()

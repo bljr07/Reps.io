@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { supabase } from '../services/supabase'
+import { supabase } from '@/services/supabase'
 import type { User, Session } from '@supabase/supabase-js'
 
 export const useAuthStore = defineStore('auth', {

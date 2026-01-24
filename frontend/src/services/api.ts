@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { supabase } from '../services/supabase';
+import { supabase } from './supabase';
 
 // 1. Create the Axios instance pointing to your Backend
 const apiClient = axios.create({

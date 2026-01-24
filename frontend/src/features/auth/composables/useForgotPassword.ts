@@ -1,6 +1,6 @@
 import { ref } from 'vue'
-import { useAuthStore } from '../stores/auth'
-import { useAlertStore } from '../stores/alert'
+import { useAuthStore } from '@/features/auth/stores/auth'
+import { useAlertStore } from '@/stores/alert'
 
 export function useForgotPassword() {
   const auth = useAuthStore()
