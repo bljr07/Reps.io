@@ -25,6 +25,7 @@ const inputType = computed(() => {
     <input
       :type="inputType"
       :value="modelValue"
+      @input="emit('update:modelValue', ($event.target as HTMLInputElement).value)"
       class="form-control form-control-dark border border-info"
       :class="{ 'pe-5': type === 'password' }"
       :placeholder="placeholder"
