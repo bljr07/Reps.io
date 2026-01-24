@@ -2,7 +2,8 @@
 import { ref, onMounted, watch, onBeforeUnmount } from 'vue'
 import { Modal } from 'bootstrap'
 import { useForgotPassword } from '../composables/useForgotPassword'
-import AuthInput from '@/components/ui/AuthInput.vue'
+import CustomInput from '@/components/ui/CustomInput.vue'
+import AsyncButton from '@/components/ui/AsyncButton.vue'
 
 const props = defineProps<{
   isForgetPassword: boolean
@@ -64,10 +65,12 @@ const handleFormSubmit = async () => {
       <div class="modal-content bg-dark border mb-3" style="border-color: var(--border-color);">
         
         <!-- Header -->
-        <div class="modal-header border-bottom border-secondary">
+        <div class="modal-header border-0">
           <h5 class="modal-title text-white">Reset Password</h5>
           <button type="button" class="btn-close btn-close-white" @click="$emit('closeModal')"></button>
         </div>
+
+        <hr class="m-0">
 
         <!-- Body -->
         <div class="modal-body">
@@ -76,21 +79,18 @@ const handleFormSubmit = async () => {
           </p>
           
           <form @submit.prevent="handleFormSubmit">
-            <AuthInput 
+            <label class="form-label text-white">Email</label>
+            <CustomInput 
               v-model="email" 
-              label="Email Address" 
-              type="email" 
+              type="email"
               placeholder="name@example.com" 
               required 
             />
 
             <!-- Submit btn -->
-            <div class="d-grid mt-4">
-              <button type="submit" class="btn btn-primary hover-expand" :disabled="isLoading">
-                <span v-if="isLoading" class="spinner-border spinner-border-sm me-2"></span>
-                Send Reset Link
-              </button>
-            </div>
+             <AsyncButton type="submit" :loading="isLoading">
+              Send Reset Link
+            </AsyncButton>
           </form>
         </div>
       </div>

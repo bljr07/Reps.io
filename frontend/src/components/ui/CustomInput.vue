@@ -3,7 +3,6 @@ import { ref, computed } from 'vue'
 
 const props = defineProps<{
   modelValue: string
-  label: string
   type?: string
   placeholder?: string
   required?: boolean
@@ -23,11 +22,9 @@ const inputType = computed(() => {
 
 <template>
   <div class="mb-3 position-relative">
-    <label class="form-label text-white">{{ label }}</label>
     <input
       :type="inputType"
       :value="modelValue"
-      @input="emit('update:modelValue', ($event.target as HTMLInputElement).value)"
       class="form-control form-control-dark border border-info"
       :class="{ 'pe-5': type === 'password' }"
       :placeholder="placeholder"

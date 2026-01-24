@@ -34,6 +34,13 @@ body {
 }
 
 /* 4. Custom Styling */
+// hr (section dividers)
+hr {
+  margin: 1rem 0 !important;
+  border-top: 1px solid $info;
+  opacity: 25%;
+}
+
 // Forms
 .form-control-dark {
   background-color: #{$secondary};
@@ -96,6 +103,7 @@ body {
   display: inline-block; // Transform only works on block/inline-block elements
   transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); // A nice "bouncy" ease
   will-change: transform; // Optimizes rendering performance
+  cursor: pointer;
 
   &:hover {
     transform: scale(1.1); // Scales up by 10%

@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { useAuthForm } from '../composables/useAuthForm'
-import AuthInput from '@/components/ui/AuthInput.vue'
-import SocialButtons from '@/components/ui/SocialButtons.vue'
+import CustomInput from '@/components/ui/CustomInput.vue'
+import SocialSection from '@/components/ui/SocialSection.vue'
+import AsyncButton from '@/components/ui/AsyncButton.vue'
+import AppLogo from '@/components/ui/AppLogo.vue'
+import AppTitle from '@/components/ui/AppTitle.vue'
 import ForgotPasswordModal from '../components/ForgotPasswordModal.vue'
 
 // Business logic handled by /composables/useAuthForm
@@ -11,28 +14,29 @@ const { email, password, isSignUp, isLoading, isForgetPassword, handleSubmit, ha
 
 <template>
   <div class="d-flex justify-content-center align-items-center min-vh-100">
-    <div class="login-card p-4" style="max-width: 480px; width: 100%;">
+    <!-- Main div -->
+    <div class="p-4" style="max-width: 576px; width: 100%;">
+      <!-- Header Section -->
       <div class="text-center mb-4">
-        <div class="logo mb-3 bg-primary d-inline-block p-3 border rounded-4">
-          <i class="fa-solid fa-dumbbell text-white fs-1" style="rotate: 135deg;"></i>
-        </div>
-        <h1 class="text-white font-weight-bold mb-2">Reps.io</h1>
+        <AppLogo />
+        <AppTitle />
         <h2 class="text-white mb-2">Welcome back, athlete.</h2>
         <p class="text-info">Enter your details to access your workout logs.</p>
       </div>
       
+      <!-- Auth Form -->
       <form @submit.prevent="handleSubmit">
-        <AuthInput 
+        <label class="form-label text-white">Email</label>
+        <CustomInput 
           v-model="email" 
-          label="Email" 
           type="email" 
           placeholder="Enter email address"
           required 
         />
 
-        <AuthInput 
+        <label class="form-label text-white">Password</label>
+        <CustomInput 
           v-model="password" 
-          label="Password" 
           type="password" 
           placeholder="Enter password"
           required 
@@ -47,25 +51,16 @@ const { email, password, isSignUp, isLoading, isForgetPassword, handleSubmit, ha
           </a>
         </div>
 
-        <button
-          type="submit"
-          class="btn btn-primary btn-lg w-100 py-2 hover-expand text-white fw-medium"
-          :disabled="isLoading"
-          style="border: none;"
-        >
-          <span v-if="isLoading" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+        <AsyncButton type="submit" :loading="isLoading">
           {{ isSignUp ? 'Create Account' : 'Sign In' }}
-          <i class="bi bi-arrow-right ms-2"></i>
-        </button>
+          <i class="bi bi-arrow-right"></i>
+        </AsyncButton>
       </form>
 
-      <div class="text-center mt-4 mb-3">
-        <hr class="border border-info mb-2">
-        <span class="text-info small px-2">OR CONTINUE WITH</span>
-      </div>
+      <!-- Socials -->
+      <SocialSection />
 
-      <SocialButtons />
-
+      <!-- Sign In / Create Account -->
       <div class="text-center mt-4">
         <p class="text-info mb-0">
           {{ isSignUp ? 'Already have an account?' : 'New to Reps.io?' }} &nbsp;
@@ -74,10 +69,14 @@ const { email, password, isSignUp, isLoading, isForgetPassword, handleSubmit, ha
           </a>
         </p>
       </div>
+
     </div>
-    <ForgotPasswordModal 
-      :isForgetPassword="isForgetPassword"
-      @close-modal="isForgetPassword=false"
-      />
+
   </div>
+
+  <!-- Forgot Password Modal -->
+  <ForgotPasswordModal 
+    :isForgetPassword="isForgetPassword"
+    @close-modal="isForgetPassword=false"
+    />
 </template>
