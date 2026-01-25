@@ -36,7 +36,7 @@ const getIcon = (name: string) => {
 </script>
 
 <template>
-  <CustomCard class="d-flex align-items-center justify-content-between mb-3 cursor-pointer hover-expand">
+  <CustomCard class="d-flex align-items-center justify-content-between mb-3 cursor-pointer hover-expand limit-scale">
     
     <div class="d-flex align-items-center gap-3">
       <div class="icon-box d-flex align-items-center justify-content-center rounded-3">
@@ -66,4 +66,9 @@ const getIcon = (name: string) => {
 
 .status-dot { width: 8px; height: 8px; }
 .xs-text { font-size: 0.75rem; letter-spacing: 0.5px; }
+
+.limit-scale:hover {
+  /* Override default scaling as width might exceed page */
+  transform: scale(1.05);
+}
 </style>
