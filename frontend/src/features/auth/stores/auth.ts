@@ -1,12 +1,13 @@
 import { defineStore } from 'pinia'
 import { supabase } from '@/services/supabase'
 import type { User, Session } from '@supabase/supabase-js'
+import type { AuthUser, AuthSession } from '../types'
 
 export const useAuthStore = defineStore('auth', {
   // 1. STATE: The data we want to keep track of
   state: () => ({
-    user: null as User | null,
-    session: null as Session | null,
+    user: null as AuthUser | null,
+    session: null as AuthSession | null,
     loading: true // Start true so we don't show the login screen while checking
   }),
 

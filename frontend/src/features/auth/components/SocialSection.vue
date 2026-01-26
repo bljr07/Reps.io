@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import CustomBtn from '@/components/ui/CustomBtn.vue';
+import type { SocialPlatform } from '../types'
 
 // Edit here
-const platforms = [
+const platforms: SocialPlatform[] = [
   { name: 'facebook', link: '' },
   { name: 'google', link: 'https://google.com' },
 ]

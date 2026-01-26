@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import CustomCard from '@/components/ui/CustomCard.vue'
+import type { WeeklyChartData } from '../types';
 
 // Mock data for display purposes
-const days = [
+const days: WeeklyChartData[] = [
   { label: 'M', height: '40%', active: false },
   { label: 'T', height: '55%', active: false },
   { label: 'W', height: '85%', active: true }, // Current day
