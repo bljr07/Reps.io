@@ -1,31 +1,27 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import CustomCard from '@/components/ui/CustomCard.vue'
+import type { WorkoutSet } from '../types'
 
-const props = defineProps<{
+defineProps<{
   exerciseName: string
-  sets: number
+  sets: WorkoutSet[]
 }>()
 
-// Mock Set Data
-const setRows = ref(
-  Array.from({ length: props.sets }).map((_, i) => ({
-    id: i,
-    prev: '135x10', // Mock previous data
-    kg: '',
-    reps: '',
-  }))
-)
 </script>
 
 <template>
-  <div class="card-custom mb-3">
-    <div class="d-flex justify-content-between align-items-center mb-3">
+  <CustomCard class="mb-3">
+    <!-- Header and ... btn -->
+    <div class="d-flex justify-content-between align-items-center">
       <h5 class="text-white fw-bold mb-0">{{ exerciseName }}</h5>
       <button class="btn btn-sm text-info">
         <span class="material-symbols-outlined">more_horiz</span>
       </button>
     </div>
 
+    <hr>
+
+    <!-- Table Headers -->
     <div class="row mb-2 text-info small fw-bold text-center">
       <div class="row col-5 m-0 p-0">
         <div class="col">Set</div>
@@ -37,8 +33,9 @@ const setRows = ref(
       </div>
     </div>
 
+    <!-- Set Rows -->
     <div 
-      v-for="(set, index) in setRows" 
+      v-for="(set, index) in sets" 
       :key="set.id" 
       class="row mb-2 rounded-2 gap-0"
     >
@@ -58,22 +55,12 @@ const setRows = ref(
       </div>
     </div>
 
+    <!-- Add Set Btn -->
     <div class="mt-3 text-center">
       <button class="btn btn-sm text-primary fw-bold text-uppercase small w-100 py-2" style="background: rgba(13, 166, 242, 0.1);">
         <span class="material-symbols-outlined align-middle" style="font-size: 1rem;">add</span> Add Set
       </button>
     </div>
 
-  </div>
+  </CustomCard>
 </template>
-
-<style scoped>
-.bg-success-subtle { background-color: rgba(25, 135, 84, 0.15); transition: background-color 0.3s; }
-
-.checkbox-custom {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  transition: all 0.2s;
-}
-</style>
