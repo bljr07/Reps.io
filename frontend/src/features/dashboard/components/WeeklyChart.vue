@@ -2,23 +2,16 @@
 import CustomCard from '@/components/ui/CustomCard.vue'
 import type { WeeklyChartData } from '../types';
 
-// Mock data for display purposes
-const days: WeeklyChartData[] = [
-  { label: 'M', height: '40%', active: false },
-  { label: 'T', height: '55%', active: false },
-  { label: 'W', height: '85%', active: true }, // Current day
-  { label: 'T', height: '30%', active: false },
-  { label: 'F', height: '65%', active: false },
-  { label: 'S', height: '45%', active: false },
-  { label: 'S', height: '20%', active: false },
-]
+defineProps<{
+  chartData: WeeklyChartData[]
+}>()
 </script>
 
 <template>
   <CustomCard class="d-flex">
     <div class="flex-fill d-flex justify-content-between align-items-end" style="height: 160px;">
       <div 
-        v-for="(day, index) in days" 
+        v-for="(day, index) in $props.chartData"
         :key="index"
         class="d-flex flex-column align-items-center gap-2 h-100"
         style="min-height: 160px; justify-content: flex-end"

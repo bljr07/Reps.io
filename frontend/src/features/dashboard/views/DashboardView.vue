@@ -1,28 +1,12 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-import apiClient from '@/services/api'
-import type { RecoveryStat } from '../types'
-
-// Components
 import DashboardHeader from '../components/DashboardHeader.vue'
 import RecoverySection from '../components/RecoverySection.vue'
 import BottomNav from '@/components/layout/BottomNav.vue'
 import CustomBtn from '@/components/ui/CustomBtn.vue'
 import StatSection from '../components/StatSection.vue'
+import { useDashboard } from '../composables/useDashboard'
 
-const recoveryStats = ref<RecoveryStat[]>([])
-const isLoading = ref(true)
-
-onMounted(async () => {
-  try {
-    const response = await apiClient.get('/analytics/recovery')
-    recoveryStats.value = response.data.data
-  } catch (err) {
-    console.error('Failed to load stats', err)
-  } finally {
-    isLoading.value = false
-  }
-})
+const { recoveryStats, chartData, isLoading } = useDashboard()
 </script>
 
 <template>
@@ -34,7 +18,7 @@ onMounted(async () => {
     <!-- Main Body -->
     <main class="container px-3">
       
-      <StatSection />
+      <StatSection :chartData="chartData"/>
 
       <hr class="">
 

@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import WeeklyChart from '../components/WeeklyChart.vue'
 import StatCard from '../components/StatCard.vue'
+import type { WeeklyChartData } from '../types';
+
+defineProps<{
+  chartData: WeeklyChartData[]
+}>()
 </script>
 
 <!-- TODO: Update to dynamically get data -->
@@ -22,7 +27,10 @@ import StatCard from '../components/StatCard.vue'
 
     <!-- Stats -->
     <section class="row m-0 g-3 w-100">
-        <WeeklyChart class="col-12" />
+        <WeeklyChart 
+            class="col-12"
+            :chartData="chartData"
+            />
         <StatCard 
             label="Streak" 
             value="12" 
