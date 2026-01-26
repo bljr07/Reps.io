@@ -1,38 +1,15 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import CustomCard from '@/components/ui/CustomCard.vue'
+import { getMuscleIcon, getStatus } from '../utils'
 
 const props = defineProps<{
   name: string
   daysAgo: number | null
 }>()
 
-// Logic to determine status style
-const muscleToIconMap: Record<string, string> = {
-    'Chest': 'fitness_center',
-    'Legs': 'directions_run',
-    'Back': 'accessibility_new',
-    'Arms': 'fitness_center',
-    'Shoulders': 'accessibility'
-  }
-
-const status = computed(() => {
-  switch (props.daysAgo) {
-    case null:
-      return { label: 'No information', color: 'info', icon: 'question' }
-    case 1:
-      return { label: 'Fatigued', color: 'danger', icon: 'triangle-exclamation' }
-    case 2:
-      return { label: 'Recovering', color: 'warning', icon: 'battery-half' }
-    default:
-      return { label: 'Ready', color: 'success', icon: 'check-circle' }
-  }
-})
-
-// Map muscle names to icons
-const getIcon = (name: string) => {
-  return muscleToIconMap[name] || 'fitness_center'
-}
+const status = computed(() => getStatus(props.daysAgo!))
+const iconName = computed(() => getMuscleIcon(props.name))
 </script>
 
 <template>
@@ -40,7 +17,7 @@ const getIcon = (name: string) => {
     
     <div class="d-flex align-items-center gap-3">
       <div class="icon-box d-flex align-items-center justify-content-center rounded-3">
-        <span class="material-symbols-outlined text-white">{{ getIcon(name) }}</span>
+        <span class="material-symbols-outlined text-white">{{ iconName }}</span>
       </div>
       <div>
         <h6 class="mb-0 fw-bold text-white">{{ name }}</h6>
