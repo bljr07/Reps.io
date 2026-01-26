@@ -44,7 +44,7 @@ withDefaults(defineProps<{
 
   <!-- Anchor Tags -->
   <a 
-    v-if="element == 'a' && href" 
+    v-else-if="element == 'a' && href" 
     class="btn hover-expand text-center" 
     :class="[
       `bg-${variant}`,
