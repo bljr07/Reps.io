@@ -8,3 +8,11 @@ export interface WeeklyChartData {
   height: string; // e.g., "40%"
   active: boolean;
 }
+
+// Might break this up in the future depending on what we show in the UI
+export interface DashboardSummary {
+  weeklyVolume: number;
+  weeklyVolumeTrend: number;
+  currentStreak: number;
+  totalVolume: number;
+}

@@ -1,5 +1,5 @@
 import apiClient from '@/services/api';
-import type { RecoveryStat, WeeklyChartData } from '../types';
+import type { DashboardSummary, RecoveryStat, WeeklyChartData } from '../types';
 
 export const dashboardService = {
   async getRecoveryStats(): Promise<RecoveryStat[]> {
@@ -19,5 +19,16 @@ export const dashboardService = {
         { label: 'S', height: '45%', active: false },
         { label: 'S', height: '20%', active: false },
     ];
-  }
+  },
+
+  async getSummary(): Promise<DashboardSummary> {
+    return {
+      // Mock data for display purposes only
+      // TODO: Send API req for data
+      weeklyVolume: 32,
+      weeklyVolumeTrend: 12,
+      currentStreak: 12,
+      totalVolume: 15400
+    }
+}
 };

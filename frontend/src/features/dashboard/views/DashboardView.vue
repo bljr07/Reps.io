@@ -6,7 +6,7 @@ import CustomBtn from '@/components/ui/CustomBtn.vue'
 import StatSection from '../components/StatSection.vue'
 import { useDashboard } from '../composables/useDashboard'
 
-const { recoveryStats, chartData, isLoading } = useDashboard()
+const { recoveryStats, chartData, summary, isLoading } = useDashboard()
 </script>
 
 <template>
@@ -18,7 +18,10 @@ const { recoveryStats, chartData, isLoading } = useDashboard()
     <!-- Main Body -->
     <main class="container px-3">
       
-      <StatSection :chartData="chartData"/>
+      <StatSection 
+        :chartData="chartData"
+        :summary="summary"
+        />
 
       <hr class="">
 
