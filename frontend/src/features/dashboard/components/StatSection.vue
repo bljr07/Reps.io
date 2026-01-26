@@ -19,8 +19,8 @@ const props = defineProps<{
                 <h1 class="fw-bold text-white mb-0">{{ props.summary?.weeklyVolume }} Sets</h1>
             </div>
             <div class="d-flex align-items-center gap-1 mb-1">
-                <span class="material-symbols-outlined text-success" style="font-size: 1rem;">{{ props.summary!.weeklyVolumeTrend >= 0 ?  "trending_up" : "trending_down" }}</span>
-                <span class="text-success fw-bold small">{{ props.summary!.weeklyVolumeTrend >= 0 ?  "+" : "-" }}{{ props.summary?.weeklyVolumeTrend }}%</span>
+                <span class="material-symbols-outlined text-success" style="font-size: 1rem;">{{ props.summary && props.summary?.weeklyVolumeTrend >= 0 ?  "trending_up" : "trending_down" }}</span>
+                <span class="text-success fw-bold small">{{ props.summary && props.summary!.weeklyVolumeTrend >= 0 ?  "+" : "-" }}{{ props.summary?.weeklyVolumeTrend }}%</span>
                 <span class="text-muted small">vs last week</span>
             </div>
         </div>
@@ -34,7 +34,7 @@ const props = defineProps<{
             />
         <StatCard 
             label="Streak" 
-            :value="props.summary!.currentStreak" 
+            :value="props.summary ?  props.summary.currentStreak : 0" 
             unit = "Days"
             icon="local_fire_department" 
             icon-color="text-warning"
@@ -42,7 +42,7 @@ const props = defineProps<{
         />
         <StatCard 
             label="Volume" 
-            :value="props.summary!.totalVolume"
+            :value="props.summary ?  props.summary.totalVolume : 0"
             unit="kg"
             icon="weight" 
             icon-color="text-primary"
