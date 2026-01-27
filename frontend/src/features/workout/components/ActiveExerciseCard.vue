@@ -1,19 +1,19 @@
 <script setup lang="ts">
 import CustomCard from '@/components/ui/CustomCard.vue'
-import type { WorkoutSet } from '../types'
+import type { ActiveExercise, WorkoutSet } from '../types'
 
 defineProps<{
-  exerciseName: string
-  sets: WorkoutSet[]
+  exercise: ActiveExercise;
 }>()
 
+defineEmits(['addSet'])
 </script>
 
 <template>
   <CustomCard class="mb-3">
     <!-- Header and ... btn -->
     <div class="d-flex justify-content-between align-items-center">
-      <h5 class="text-white fw-bold mb-0">{{ exerciseName }}</h5>
+      <h5 class="text-white fw-bold mb-0">{{ exercise.name }}</h5>
       <button class="btn btn-sm text-info">
         <span class="material-symbols-outlined">more_horiz</span>
       </button>
@@ -35,8 +35,8 @@ defineProps<{
 
     <!-- Set Rows -->
     <div 
-      v-for="(set, index) in sets" 
-      :key="set.id" 
+      v-for="(set, index) in exercise.sets" 
+      :key="set.setNumber" 
       class="row mb-2 rounded-2 gap-0"
     >
       <div class="row col-5 align-items-center m-0 p-0">
@@ -57,7 +57,7 @@ defineProps<{
 
     <!-- Add Set Btn -->
     <div class="mt-3 text-center">
-      <button class="btn btn-sm text-primary fw-bold text-uppercase small w-100 py-2" style="background: rgba(13, 166, 242, 0.1);">
+      <button class="btn btn-sm text-primary fw-bold text-uppercase small w-100 py-2" style="background: rgba(13, 166, 242, 0.1);" @click="$emit('addSet', exercise.id)">
         <span class="material-symbols-outlined align-middle" style="font-size: 1rem;">add</span> Add Set
       </button>
     </div>

@@ -6,7 +6,7 @@ import WorkoutControls from '../components/WorkoutControls.vue'
 import ActiveExerciseCard from '../components/ActiveExerciseCard.vue'
 import EmptyWorkoutState from '../components/EmptyWorkoutState.vue'
 
-const { exercises, addExercise, finishWorkout } = useActiveWorkout()
+const { exercises, addExercise, addSetToExercise, finishWorkout } = useActiveWorkout()
 </script>
 
 <template>
@@ -23,8 +23,8 @@ const { exercises, addExercise, finishWorkout } = useActiveWorkout()
         <ActiveExerciseCard 
           v-for="ex in exercises" 
           :key="ex.id"
-          :exercise-name="ex.name"
-          :sets="ex.sets"
+          :exercise="ex"
+          @add-set="addSetToExercise(ex.id)"
         />
       </div>
 

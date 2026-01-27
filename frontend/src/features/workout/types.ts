@@ -1,5 +1,5 @@
 export interface WorkoutSet {
-  id: number; // or string
+  setNumber: number; // or string
   prev: string;
   kg: string | number;
   reps: string | number;
