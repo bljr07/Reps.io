@@ -11,8 +11,9 @@ defineEmits(['add-exercise', 'open-timer'])
       <CustomBtn 
         variant="secondary" 
         extra-classes="flex-fill fw-bold py-3" 
-        @click="$emit('add-exercise')"
-        >
+        element="router-link"
+        href="/workout/select-muscle" 
+      >
         <span class="material-symbols-outlined me-2">add</span>
         Add Exercise
       </CustomBtn>

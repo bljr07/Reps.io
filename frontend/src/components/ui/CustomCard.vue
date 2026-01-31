@@ -7,7 +7,7 @@ withDefaults(defineProps<{
 </script>
 
 <template>
-  <div class="card-custom" :class="{ 'p-3': !noPadding }">
+  <div class="card-custom" :class="{ 'p-3': !noPadding, 'p-0': noPadding }">
     <slot></slot>
   </div>
 </template>

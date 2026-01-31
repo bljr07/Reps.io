@@ -10,3 +10,10 @@ export interface ActiveExercise {
   name: string;
   sets: WorkoutSet[];
 }
+
+export interface MuscleGroup {
+  id: string;
+  name: string;
+  lastWorkedDays: number;
+  imageUrl: string;
+}
