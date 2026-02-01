@@ -4,6 +4,7 @@ import LoginView from '@/features/auth/views/LoginView.vue'
 import DashboardView from '@/features/dashboard/views/DashboardView.vue'
 import ActiveWorkoutView from '@/features/workout/views/ActiveWorkoutView.vue'
 import MuscleSelectorView from '@/features/workout/views/MuscleSelectorView.vue'
+import SubMuscleSelectorView from '@/features/workout/views/SubMuscleSelectorView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -43,6 +44,12 @@ const router = createRouter({
       path: '/workout/select-muscle',
       name: 'select-muscle',
       component: MuscleSelectorView,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/workout/select-sub-muscle',
+      name: 'select-sub-muscle',
+      component: SubMuscleSelectorView,
       meta: { requiresAuth: true }
     },
     {

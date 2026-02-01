@@ -26,7 +26,7 @@ const handleBack = () => {
             </template>
         </CustomHeader>
 
-        <main class="flex-grow-1 px-3 overflow-auto pt-4">
+        <main class="flex-grow-1 px-3 overflow-auto pt-4 container">
             <slot></slot>
         </main>
 

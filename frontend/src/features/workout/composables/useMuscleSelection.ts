@@ -49,8 +49,7 @@ export function useMuscleSelection() {
   const selectMuscle = (id: string) => {
     selectedMuscleId.value = id
     // Logic to proceed to next step would go here
-    // router.push({ name: 'select-exercise', query: { muscle: id } })
-    console.log("Selected:", id)
+    router.push({ name: 'select-sub-muscle', query: { muscle_group: id } })
   }
 
   return {

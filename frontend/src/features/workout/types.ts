@@ -17,3 +17,9 @@ export interface MuscleGroup {
   lastWorkedDays: number;
   imageUrl: string;
 }
+
+export interface SubMuscleGroup {
+  id: string;
+  group_id: string;
+  name: string;
+}
