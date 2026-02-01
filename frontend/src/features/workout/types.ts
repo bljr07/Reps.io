@@ -23,3 +23,11 @@ export interface SubMuscleGroup {
   group_id: string;
   name: string;
 }
+
+export interface Exercise {
+  id: string;
+  sub_muscle_id: string;
+  name: string;
+  equipment: string;
+  created_by_user: string;
+}

@@ -24,8 +24,7 @@ export function useSubMuscleSelection() {
 
   const selectSubMuscle = (subMuscle: SubMuscleGroup) => {
     console.log("Selected Sub Muscle:", subMuscle.name)
-    // Next Step: Go to Exercise Selection
-    // router.push({ name: 'select-sub-muscle', query: { muscle: majorMuscleId } })
+    router.push({ name: 'select-exercise', query: { ...route.query, sub: subMuscle.id } })
   }
 
   onMounted(() => {

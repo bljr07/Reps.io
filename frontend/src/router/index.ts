@@ -5,6 +5,7 @@ import DashboardView from '@/features/dashboard/views/DashboardView.vue'
 import ActiveWorkoutView from '@/features/workout/views/ActiveWorkoutView.vue'
 import MuscleSelectorView from '@/features/workout/views/MuscleSelectorView.vue'
 import SubMuscleSelectorView from '@/features/workout/views/SubMuscleSelectorView.vue'
+import ExerciseSelectorView from '@/features/workout/views/ExerciseSelectorView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -52,6 +53,12 @@ const router = createRouter({
       component: SubMuscleSelectorView,
       meta: { requiresAuth: true }
     },
+    {
+  path: '/workout/select-exercise',
+  name: 'select-exercise',
+  component: ExerciseSelectorView,
+  meta: { requiresAuth: true }
+},
     {
       path: '/',
       redirect: '/dashboard'
