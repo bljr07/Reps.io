@@ -27,6 +27,13 @@ export const useActiveWorkoutStore = defineStore('activeWorkout', () => {
       })
     }
 
+  const addSetToExercise = (exerciseId: string) => {
+    const exercise = exercises.value.find(e => e.id === exerciseId)
+    if (exercise) {
+      exercise.sets.push(createEmptySet(exercise.sets.length + 1))
+    }
+  }
+
   const finishWorkout = () => {
     console.log("Saving Workout:", exercises.value)
     exercises.value = []
@@ -38,6 +45,7 @@ export const useActiveWorkoutStore = defineStore('activeWorkout', () => {
     startTime,
     startWorkout,
     addExercise,
+    addSetToExercise,
     finishWorkout
   }
 })

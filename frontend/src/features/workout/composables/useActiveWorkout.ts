@@ -11,9 +11,14 @@ export function useActiveWorkout() {
     store.addExercise(exercise)
   }
 
+  const addSetToExercise = (exerciseId: string) => {
+    store.addSetToExercise(exerciseId)
+  }
+
   return {
     exercises,
     addExercise,
+    addSetToExercise,
     finishWorkout: store.finishWorkout
   }
 }
