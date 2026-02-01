@@ -13,28 +13,20 @@ const { exercises, addExercise, addSetToExercise, finishWorkout } = useActiveWor
   <div class="container-fluid px-0 pb-5">
     <!-- Header -->
     <WorkoutHeader @finish="finishWorkout" />
-  
+
     <!-- Main Body -->
-    <main class="d-flex flex-col px-4 pt-4">
-      
+    <main class="d-flex flex-col mt-4 container">
+
       <EmptyWorkoutState v-if="exercises.length === 0" />
 
       <div v-else>
-        <ActiveExerciseCard 
-          v-for="ex in exercises" 
-          :key="ex.id"
-          :exercise="ex"
-          @add-set="addSetToExercise(ex.id)"
-        />
+        <ActiveExerciseCard v-for="ex in exercises" :key="ex.id" :exercise="ex" @add-set="addSetToExercise(ex.id)" />
       </div>
 
     </main>
 
     <!-- Footer -->
-    <WorkoutControls 
-      @add-exercise="addExercise" 
-      @open-timer="console.log('Open Timer')" 
-    />
+    <WorkoutControls @add-exercise="addExercise" @open-timer="console.log('Open Timer')" />
 
   </div>
 </template>

@@ -7,25 +7,17 @@ defineEmits(['add-exercise', 'open-timer'])
 
 <template>
   <CustomFooter>
-    <div class="d-flex gap-3">
-      <CustomBtn 
-        variant="secondary" 
-        extra-classes="flex-fill fw-bold py-3" 
-        element="router-link"
-        href="/workout/select-muscle" 
-      >
+    <div class="d-flex gap-3 container">
+      <CustomBtn variant="secondary" extra-classes="flex-fill fw-bold py-3" element="router-link"
+        href="/workout/select-muscle">
         <span class="material-symbols-outlined me-2">add</span>
         Add Exercise
       </CustomBtn>
-      
-      <CustomBtn 
-      variant="secondary" 
-      extra-classes="flex-fill fw-bold py-3" 
-      @click="$emit('open-timer')"
-      >
-      <span class="material-symbols-outlined me-2">timer</span>
-      Rest Timer
-    </CustomBtn>
-  </div>
-</CustomFooter>
+
+      <CustomBtn variant="secondary" extra-classes="flex-fill fw-bold py-3" @click="$emit('open-timer')">
+        <span class="material-symbols-outlined me-2">timer</span>
+        Rest Timer
+      </CustomBtn>
+    </div>
+  </CustomFooter>
 </template>
