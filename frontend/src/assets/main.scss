@@ -113,3 +113,9 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none; /* Removes the buttons for WebKit browsers */
   margin: 0; /* Ensures no extra margin is left behind */
 }
+
+/* Timer Font */
+.timer-font {
+  font-family: 'Courier New', Courier, monospace; /* Or import a specific mono font */
+  font-variant-numeric: tabular-nums;
+}

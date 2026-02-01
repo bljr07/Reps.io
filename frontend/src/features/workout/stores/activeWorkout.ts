@@ -34,18 +34,72 @@ export const useActiveWorkoutStore = defineStore('activeWorkout', () => {
     }
   }
 
+  /* Rest Timer Logic */
+  const restTimerSeconds = ref(120)
+  const isRestTimerRunning = ref(false)
+  let restTimerInterval: number | null = null
+
+  // Computed for formatting (optional, but convenient)
+  const formattedRestTime = computed(() => {
+    const m = Math.floor(restTimerSeconds.value / 60)
+    const s = restTimerSeconds.value % 60
+    return {
+      m: m.toString().padStart(2, '0'),
+      s: s.toString().padStart(2, '0')
+    }
+  })
+
+  const startRestTimer = () => {
+    if (isRestTimerRunning.value && restTimerInterval) return
+
+    isRestTimerRunning.value = true
+    if (restTimerInterval) clearInterval(restTimerInterval)
+    restTimerInterval = setInterval(() => {
+      if (restTimerSeconds.value > 0) {
+        restTimerSeconds.value--
+      } else {
+        stopRestTimer()
+      }
+    }, 1000)
+  }
+
+  const stopRestTimer = () => {
+    if (restTimerInterval) {
+      clearInterval(restTimerInterval)
+      restTimerInterval = null
+    }
+    isRestTimerRunning.value = false
+  }
+
+  const addRestTime = (seconds: number) => {
+    restTimerSeconds.value = Math.max(0, restTimerSeconds.value + seconds)
+  }
+
+  const resetRestTimer = (seconds: number = 120) => {
+    restTimerSeconds.value = seconds
+  }
+
   const finishWorkout = () => {
     console.log("Saving Workout:", exercises.value)
     exercises.value = []
     startTime.value = null
+    stopRestTimer()
+    resetRestTimer(120)
   }
 
   return {
     exercises,
     startTime,
+    restTimerSeconds,
+    isRestTimerRunning,
+    formattedRestTime,
     startWorkout,
     addExercise,
     addSetToExercise,
-    finishWorkout
+    finishWorkout,
+    startRestTimer,
+    stopRestTimer,
+    addRestTime,
+    resetRestTimer
   }
 })

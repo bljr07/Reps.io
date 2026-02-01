@@ -5,8 +5,9 @@ import WorkoutHeader from '../components/WorkoutHeader.vue'
 import WorkoutControls from '../components/WorkoutControls.vue'
 import ActiveExerciseCard from '../components/ActiveExerciseCard.vue'
 import EmptyWorkoutState from '../components/EmptyWorkoutState.vue'
+import RestTimerOverlay from '../components/RestTimerOverlay.vue'
 
-const { exercises, addExercise, addSetToExercise, finishWorkout } = useActiveWorkout()
+const { exercises, showRestTimer, addExercise, addSetToExercise, finishWorkout } = useActiveWorkout()
 </script>
 
 <template>
@@ -26,7 +27,9 @@ const { exercises, addExercise, addSetToExercise, finishWorkout } = useActiveWor
     </main>
 
     <!-- Footer -->
-    <WorkoutControls @add-exercise="addExercise" @open-timer="console.log('Open Timer')" />
+    <WorkoutControls @add-exercise="addExercise" @open-timer="showRestTimer = true" />
+
+    <RestTimerOverlay v-model="showRestTimer" @skip="showRestTimer = false" />
 
   </div>
 </template>

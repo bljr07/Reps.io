@@ -1,6 +1,7 @@
 import { storeToRefs } from 'pinia'
 import { useActiveWorkoutStore } from '../stores/activeWorkout'
 import type { Exercise } from '../types'
+import { ref } from 'vue'
 
 export function useActiveWorkout() {
   const store = useActiveWorkoutStore()
@@ -15,10 +16,13 @@ export function useActiveWorkout() {
     store.addSetToExercise(exerciseId)
   }
 
+  const showRestTimer = ref(false)
+
   return {
     exercises,
+    showRestTimer,
     addExercise,
     addSetToExercise,
-    finishWorkout: store.finishWorkout
+    finishWorkout: store.finishWorkout,
   }
 }

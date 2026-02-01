@@ -26,16 +26,12 @@ onUnmounted(() => {
 <template>
   <div class="d-flex flex-column">
     <span class="text-info small fw-bold text-uppercase ls-1">Time Elapsed</span>
-    <p class="h2 fw-bolder text-white mb-0 font-mono">{{ formatTime(time) }}</p>
+    <p class="h2 fw-bolder text-white mb-0 timer-font">{{ formatTime(time) }}</p>
   </div>
 </template>
 
 <style scoped>
-.ls-1 { letter-spacing: 1px; }
-
-/* Timer Font */
-.font-mono {
-  font-family: 'Courier New', Courier, monospace; /* Or import a specific mono font */
-  font-variant-numeric: tabular-nums;
+.ls-1 {
+  letter-spacing: 1px;
 }
 </style>
